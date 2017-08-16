@@ -4,7 +4,7 @@ import store from '../store'
 import {getAllBook} from '../actions/action'
 
 export function getAllBookData(){
-	return axios.get('/book')
+	return axios.get('api/books')
 		.then(response=>{
 			store.dispatch(getAllBook(response.data));
 			return response;
@@ -13,7 +13,7 @@ export function getAllBookData(){
 
 export function deleteBookData(id){
 	debugger;
-	return axios.delete('/book/'+id)
+	return axios.delete('api/books/'+id)
 		.then(response=>{
 			debugger;
 			store.dispatch(getAllBook(response.data.Data))
@@ -23,11 +23,20 @@ export function deleteBookData(id){
 
 export function savebook(data){
 	debugger;
-	return axios.post('/book',{data})
+	return axios.post('api/books',{data})
 	.then(response=>{
 		debugger;
 		console.log("save book data api");
 		return response;
 	});
 
+}
+
+export function updateBook(id,data){
+	debugger;
+	return axios.put('api/books/'+id,{data})
+	.then(response=>{
+		console.log("update book data api");
+		return response;
+	});
 }

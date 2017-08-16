@@ -122,3 +122,32 @@ exports.saveBook = function(req,res){
 	})
 
 }
+
+exports.updateBook = function(req,res){
+
+	var selectionObject = {_id : req.params.id};
+	var projectionObject = req.body.data;
+
+	console.log("Updating Id : " + JSON.stringify(selectionObject));
+	console.log("updated Data : " + JSON.stringify(req.body.data));
+
+	//res.send({message : "Oops something went wrong!!!",msgtype  : "E"});
+	bookDetail.updateOne(selectionObject,projectionObject,function(err,result){
+
+		if(err)
+		{
+			return res.send({message:"Oops something went wrong!!!",msgTye : "E"}).status(500);
+		}
+		else
+		{
+			if(result.n == 1)
+			{
+				return res.send({message : "Data updated successfully !!!",msgtype : "S",Data:result}).status(200);
+			}
+			else
+			{
+				return res.send({message : "No data available!!!",msgtype : "S",Data:result}).status(400);
+			}
+		}
+	});
+}

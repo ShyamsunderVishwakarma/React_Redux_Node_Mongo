@@ -12,9 +12,9 @@ ReactDOM.render((
 	<Provider store={store}>
 	<BrowserRouter>
 		<Switch>
-			<Route path='/pen' component = {penList} />
-			<Route path='/book' component = {bookList} />
-			<Route path='/addbook' component = {addBook} />
+			<Route path='/pens' component = {penList} />
+			<Route path='/books' component = {bookList} />
+			<Route path='/addbooks' component = {addBook} />
 			<Route path='/' component = {menu} />
 		</Switch>
 	</BrowserRouter>

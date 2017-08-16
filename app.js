@@ -14,9 +14,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); 
 
 app.use('/static',express.static('public'))
-app.use('/',route);
+app.use('/api',route);
 
-app.get('/',function(req,res){
+app.get('*',function(req,res){
 	res.sendfile('./view/index.html');
 })
 

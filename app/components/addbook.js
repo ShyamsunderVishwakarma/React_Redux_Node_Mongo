@@ -2,6 +2,7 @@ import React from 'react'
 import Menu from './menu'
 import ReactDOM from 'react-dom'
 import {savebook} from '../api/book-api'
+import {validateAlpha,validateNumeric} from '../util/utility'
 
 class AddBook extends React.Component{
 
@@ -24,19 +25,62 @@ class AddBook extends React.Component{
 
 	setBookName(e){
 		debugger;
+
+		var result = validateAlpha(e.target.value)
 		this.setState({name : e.target.value});
+		if(result){
+			document.getElementById('idbookname').innerHTML="";
+			document.getElementById('idSaveBtn').disabled=false;
+		}else{
+			document.getElementById('idbookname').innerHTML="Invalid value";
+			document.getElementById('idSaveBtn').disabled=true;
+		}
+
+		
 	}
 
 	setBookDescription(e){
+
+		var result = validateAlpha(e.target.value)
 		this.setState({description : e.target.value});
+		if(result){
+			document.getElementById('idbookdescription').innerHTML="";
+			document.getElementById('idSaveBtn').disabled=false;
+		}else{
+			document.getElementById('idbookdescription').innerHTML="Invalid value";
+			document.getElementById('idSaveBtn').disabled=true;
+		}
+
+		
 	}
 
 	setBookQuantity(e){
+
+		var result = validateNumeric(e.target.value)
 		this.setState({quantity : e.target.value});
+
+		if(result){
+			document.getElementById('idbookquantity').innerHTML="";
+			document.getElementById('idSaveBtn').disabled=false;
+			
+		}else{
+			document.getElementById('idbookquantity').innerHTML="Invalid value";
+			document.getElementById('idSaveBtn').disabled=true;
+		}	
 	}
 
 	setBookprice(e){
+
+		var result = validateNumeric(e.target.value)
 		this.setState({price : e.target.value});
+
+		if(result){
+			document.getElementById('idbookprice').innerHTML="";
+			document.getElementById('idSaveBtn').disabled=false;
+		}else{
+			document.getElementById('idbookname').innerHTML="Invalid value";
+			document.getElementById('idSaveBtn').disabled=true;
+		}
 	}
 
 	saveBook()
@@ -80,11 +124,11 @@ class AddBook extends React.Component{
 				<label>{this.state.message}</label>
 			</div>
 			<div>
-				Name : <input type="text" name="bookname" value={this.state.name} onChange={this.setBookName.bind(this)} ref="InputField"/><br/>
-				Description : <input type="text" name="bookdesc" value={this.state.description}  onChange={this.setBookDescription.bind(this)}/><br/>
-				Quantity : <input type="text" name="quantity" value={this.state.quantity} onChange={this.setBookQuantity.bind(this)}/><br/>
-				Price : <input type="text" name="price" value={this.state.price} onChange={this.setBookprice.bind(this)}/><br/>
-				<button type="button" onClick={this.saveBook.bind(this)}>submit</button>
+				Name : <input type="text" name="bookname" value={this.state.name} onChange={this.setBookName.bind(this)} ref="InputField"/><label id="idbookname"></label><br/>
+				Description : <input type="text" name="bookdesc" value={this.state.description}  onChange={this.setBookDescription.bind(this)}/><label id="idbookdescription"></label><br/>
+				Quantity : <input type="text" name="quantity" value={this.state.quantity} onChange={this.setBookQuantity.bind(this)}/><label id="idbookquantity"></label><br/>
+				Price : <input type="text" name="price" value={this.state.price} onChange={this.setBookprice.bind(this)}/><label id="idbookprice"></label><br/>
+				<button id="idSaveBtn" type="button" onClick={this.saveBook.bind(this)}>submit</button>
 				<button type="button" onClick={this.clearField.bind(this)}>clear</button>
 			</div>
 			</div>

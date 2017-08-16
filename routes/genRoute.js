@@ -3,11 +3,12 @@ var router = express.Router();
 
 var genController = require('../controllers/genController')
 
-router.get('/pen',genController.getAllPen);
-router.delete('/pen/:id',genController.deletePen);
+router.get('/pens',genController.getAllPen);
+router.delete('/pens/:id',genController.deletePen);
 
-router.get('/book',genController.getAllBook);
-router.delete('/book/:id',genController.deleteBook);
-router.post('/book',genController.saveBook);
+router.get('/books',genController.getAllBook);
+router.delete('/books/:id',genController.deleteBook);
+router.post('/books',genController.saveBook);
+router.put('/books/:id',genController.updateBook);
 
 module.exports = router;

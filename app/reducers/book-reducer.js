@@ -10,7 +10,11 @@ const bookReducer = function(state = initialState,action){
 
 		case types.GET_ALL_BOOK:
 			return Object.assign({},state,{books:action.data})
-			break; 
+			break;
+
+		case types.UPDATE_BOOK:
+			return 
+			break;
 	}
 
 	return state;

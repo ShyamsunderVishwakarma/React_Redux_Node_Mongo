@@ -6,9 +6,9 @@ class Menu extends React.Component{
 	render(){
 		return(
 			<div className='menu-header'>
-				<Link className="link-margin" to='/pen'>Pen</Link>
-				<Link className="link-margin" to='/book'>Book</Link>
-				<Link className="link-margin" to='/addbook'>AddBook</Link>
+				<Link className="link-margin" to='/pens'>Pen</Link>
+				<Link className="link-margin" to='/books'>Book</Link>
+				<Link className="link-margin" to='/addbooks'>AddBook</Link>
 
 			</div>
 		)
